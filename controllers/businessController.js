@@ -37,4 +37,11 @@ router.delete('/:businessId', async (req, res) => {
     res.redirect('/businesses')
 })
 
+// GET /businesses/:businessId/edit
+router.get('/:businessId/edit', async (req, res) => {
+    const foundBusiness = await Business.findById(req.params.businessId)
+    res.render('businesses/edit.ejs', {foundBusiness: foundBusiness})
+})
+// controller function should render 'businesses/edit.ejs' <--- ejs file should have edit form
+
 module.exports = router
